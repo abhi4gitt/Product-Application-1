@@ -25,6 +25,7 @@ final class APIManager {
     func fetchProducts(completion: @escaping Handler) {
         guard let url = URL(string: Constant.API.productURL) else { return }
         
+        // Background Task
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data, error == nil else {
                 completion(.failure(.invalidData))

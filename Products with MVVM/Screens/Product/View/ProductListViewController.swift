@@ -9,27 +9,43 @@ import UIKit
 
 class ProductListViewController: UIViewController {
 
+    private var viewModel = ProductViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.fetchProducts { response in
-            switch response {
-            case .success(let products):
-                print(products)
-            case .failure(let error):
+        configuration()
+    }
+}
+
+extension ProductListViewController {
+    
+    func configuration() {
+        observeEvent()
+        initViewModel()
+    }
+    
+    func initViewModel() {
+        viewModel.fetchProducts()
+    }
+    
+    // Data Binding event obeserver - communication
+    func observeEvent() {
+        viewModel.eventHandler = { [weak self] event in
+            guard let self else { return }
+            
+            switch event {
+            case .loading:
+                // show indicator
+                print("Product loading....")
+            case .stopLoading:
+                // hide indicator
+                print("Stop loading....")
+            case .dataLoaded:
+                print("Data loaded....")
+                print(self.viewModel.products)
+            case .error(let error):
                 print(error)
             }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
