@@ -118,6 +118,7 @@
                 <outlet property="description" destination="zHW-O2-AMx" id="TQz-q4-Dbi"/>
                 <outlet property="priceLabel" destination="2gn-eE-o7u" id="8Yr-1b-kHV"/>
                 <outlet property="productCategoryLabel" destination="rY9-n9-bhx" id="8gA-oE-Kes"/>
+                <outlet property="productImageView" destination="Jsh-9u-Qg5" id="Fta-hG-Uxr"/>
                 <outlet property="rateButton" destination="RBQ-P8-eTV" id="sYM-Fd-wpp"/>
             </connections>
             <point key="canvasLocation" x="173" y="12"/>
